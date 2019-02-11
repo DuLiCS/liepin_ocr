@@ -1,17 +1,28 @@
 import cv2
 import numpy as np
+
+from img_process import veri_seg
+
+
+
+
 MIN_MATCH_COUNT = 4
 
-imgname1 = "b_7.png"
-imgname2 = "s_7.png"
+imgname1 = "b_4.png"
+imgname2 = "s_4.png"
 
 ## (1) prepare data
 img1 = cv2.imread(imgname1)
 img2 = cv2.imread(imgname2)
 gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
 
+gray1 = cv2.threshold(gray1,15,255,cv2.THRESH_BINARY_INV)[1]
+
 
 gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+
+gray2 = cv2.threshold(gray2,15,255,cv2.THRESH_BINARY_INV)[1]
+
 
 
 ## (2) Create SIFT object
